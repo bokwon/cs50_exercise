@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="mario()">Make Stairs! (up to 23 stairs)</button>
+
+<div id="demo"></div>
+
+<script>
+
+	function mario() {
+		document.getElementById("demo").innerHTML = "";
+		var height = parseInt(prompt("Height: "));
+		while (isNaN(height) || height > 23 || height == 0) {
+			height = parseInt(prompt("Height: "));
+		}
+
+		var table = document.createElement('table');
+		for (var i=0; i < height; i++){
+			var tr = document.createElement('tr');
+			for (var j=0; j < height+1; j++){
+				if(j+2 <= height-i){
+					var td = document.createElement('td');
+					var text = document.createTextNode(' ');
+				} else if (j+2 > height-i) {
+					var td = document.createElement('td');
+					var text = document.createTextNode('#');
+				}
+				td.appendChild(text);
+				tr.appendChild(td);
+			}
+			table.appendChild(tr);
+		}
+		document.getElementById("demo").appendChild(table);
+	}
+</script>
+
+</body>
+</html>
+
+

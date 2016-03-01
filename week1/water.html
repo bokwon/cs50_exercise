@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="water()">Find out how much water you are using during shower!</button>
+
+<p id="demo"></p>
+
+<script>
+function water() {
+	var mins = parseInt(prompt("How long do you take a shower in minutes?"));
+	var usedWaterPerMin = 1.5 * 128;
+	var oneBottle = 16;
+
+	var totalUsedWater = mins * usedWaterPerMin / oneBottle;
+
+	document.getElementById("demo").innerHTML = totalUsedWater + " bottles are used while you are taking shower for " +
+		mins + " minutes. ";
+}
+</script>
+
+</body>
+</html>
+
+
