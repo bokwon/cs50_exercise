@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="greedy()">Greedy Algorithm</button>
+
+<p id="content"></p>
+
+<script>
+  function greedy() {
+    // 1. Prompt user asking how much we owe
+    // 2. Have array set up for possible coins [25, 10, 5, 1]
+    // 3. Use the biggest coin, then next bigger coin.
+    // 4. Print out how much coins are used.
+
+    var content = document.getElementById("content")
+    var s = prompt("How much change is owed?");
+    var cashier = [25, 10, 5, 1];
+    var changes = {25:0, 10:0, 5:0, 1:0}
+
+    // prompt again if it's not valid format of input
+    while (isNaN(parseInt(s)) || s.split(".")[1].length > 2){
+      s = prompt("How much change is owed?");
+    }
+
+    var dollar = parseInt(s.split(".")[0]);
+    var coins = parseInt(s.split(".")[1]);
+    
+    if (isNaN(coins)) {
+      // print out the result with just dollar changes.
+      if(isNaN(dollar)){
+        output = "Nothing is owed!";
+      }else{
+        output = "Change: $" + dollar;
+      }
+    }else {
+       changeCal();
+
+      //print out the result with dollar and coin changes.
+      if(isNaN(dollar)){
+        printCoins();
+      }else{
+        output = "Change: $" + dollar + " and ";
+        printCoins();
+      }
+
+    }
+
+    content.innerHTML = output;
+
+    // calculate the changes
+    function changeCal(){
+      cashier.map(function(ele, idx){
+        for(var i=0; ele <= coins; i++){
+          changes[ele] = i+1;
+          coins -= ele;
+        }
+      }); 
+    };
+
+    // print out the coins.
+    function printCoins(){
+      cashier.map(function(ele){
+        if (changes[ele] > 0){
+          output += changes[ele] + "-" + ele + "cents\n"; 
+        }
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
+
+

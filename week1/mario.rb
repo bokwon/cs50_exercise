@@ -14,7 +14,6 @@ def mario
     puts "#{empty_block+stairs}"
     i += 1
   end  
-
 end
 
 mario
