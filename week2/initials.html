@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="initials()">Initial</button>
+
+<div id="demo"></div>
+
+<script>
+
+  function initials() {
+    document.getElementById("demo").innerHTML = "";
+    var fullName = prompt("What's your name?");
+    while(fullName.length == ""){
+      var fullName = prompt("What's your name?");
+    }
+    var initial = fullName.split(" ").map(function(element){
+      return element[0].toUpperCase();
+    });
+
+    initial = initial.join('');
+    document.getElementById("demo").innerHTML = initial;
+  }
+
+</script>
+
+</body>
+</html>
+
+
